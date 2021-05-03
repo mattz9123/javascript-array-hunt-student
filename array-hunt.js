@@ -99,37 +99,76 @@ function arrayHunt() {
     let count = myArray.length;
     let last = myArray[count - 1];
 
-    $("td#firstLast").append(first + " " + last);
+    $("td#firstLast").text(first + " " + last);
 
 
     /*
     Find the first string that contains an 'n'.
     Output it to td#firstEnn
      */
+    for(let aValue of myArray)
+    {
+        if (aValue.includes("n"))
+        {
+            $("td#firstEnn").text(aValue);
+            break;
+        }
+    }
 
 
     /*
     Find all of the strings with less than 6 characters.
     Output them to td#lessThanSix
      */
+    for(let i = 0; i < myArray.length; i++){
+        let aValue = myArray[i]
+
+        if(aValue.length < 6)
+        {
+            $("td#lessThanSix").append(aValue);
+        }
+    }
 
 
     /*
     Find the longest string in the array.
     Output it to td#longName
      */
+    let longestString = "";
+    for(let cValue of myArray)
+    {
+        if (cValue.length > longestString.length){
+            longestString = cValue;
+            $("td#longName").text(longestString);
+        }
+            }
 
 
     /*
     Find all of the strings that do not contain the letter 's'.
     Output them to td#noEss
      */
+    for(let dValue of myArray)
+    {
+        if(dValue.includes("s")){
+        }
+        else{
+            $("td#noEss").append(dValue);
+        }
+    }
 
 
     /*
     Output all of the strings, but with all of their vowels
     in uppercase, to td#upperVowels
      */
+    let upperValue = "";
+    for(let aValue of myArray)
+    {
+        upperValue = aValue.toUpperCase();
+
+        $("td#upperVowels").append(upperValue);
+    }
 
 
     /*
@@ -137,5 +176,8 @@ function arrayHunt() {
     ' - ' to td#reverseDash
      */
 
+    let reverseArray = myArray.reverse();
+    let joinArray = reverseArray.join('-');
+    $("td#reverseDash").text(joinArray);
 
 }
